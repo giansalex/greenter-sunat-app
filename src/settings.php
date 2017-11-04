@@ -9,6 +9,9 @@ return [
             'template_path' => __DIR__ . '/../templates/',
         ],
 
+        'jwt' => [
+            'secret' => 'ak5lkji3bAioTjm'
+        ],
         // Monolog settings
         'logger' => [
             'name' => 'slim-app',

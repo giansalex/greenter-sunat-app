@@ -5,7 +5,7 @@ use Slim\Http\Response;
 
 // Routes
 
-$app->get('/[{ruc}]', function (Request $request, Response $response, array $args) {
+$app->get('/api/v1/sale/[{ruc}]', function (Request $request, Response $response, array $args) {
     //$ruc = $args['ruc'];
 
     /**@var $parser \Greenter\Parser\DocumentParserInterface */

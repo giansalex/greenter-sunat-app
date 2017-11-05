@@ -24,10 +24,14 @@ $container['serializer'] = function ($c) {
     return new Serializer($normalizers, $encoders);
 };
 
-$container['parser.invoice'] = function ($c) {
+$container['parser.invoice'] = function () {
     return new \Greenter\Xml\Parser\InvoiceParser();
 };
 
-$container['dir_xml'] = function ($c) {
+$container['parser.note'] = function () {
+    return new \Greenter\Xml\Parser\NoteParser();
+};
+
+$container['dir_xml'] = function () {
     return __DIR__.'/data/';
 };

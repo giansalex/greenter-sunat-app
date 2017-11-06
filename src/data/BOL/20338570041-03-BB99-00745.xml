@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by izegarrav (EMBRACE) -->
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ccts="urn:un:unece:uncefact:documentation:2" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2" xmlns:sac="urn:sunat:names:specification:ubl:peru:schema:xsd:SunatAggregateComponents-1" xmlns:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 ..\xsd\maindoc\UBLPE-Invoice-2.0.xsd" xmlns:udt="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<ext:UBLExtensions>
+		<ext:UBLExtension>
+			<ext:ExtensionContent>
+				<sac:AdditionalInformation>
+					<sac:AdditionalMonetaryTotal>
+						<cbc:ID>1001</cbc:ID>
+						<cbc:Name>Total valor de venta - operaciones gravadas</cbc:Name>
+						<cbc:PayableAmount currencyID="PEN">1500.00</cbc:PayableAmount>
+					</sac:AdditionalMonetaryTotal>
+					<sac:AdditionalMonetaryTotal>
+						<cbc:ID>1004</cbc:ID>
+						<cbc:Name>Total valor de venta - Operaciones gratuitas</cbc:Name>
+						<cbc:PayableAmount currencyID="PEN">500.00</cbc:PayableAmount>
+					</sac:AdditionalMonetaryTotal>
+					<sac:AdditionalMonetaryTotal>
+						<cbc:ID>1005</cbc:ID>
+						<cbc:Name>Sub total de ventas</cbc:Name>
+						<cbc:PayableAmount currencyID="PEN">1000.00</cbc:PayableAmount>
+					</sac:AdditionalMonetaryTotal>
+					<sac:AdditionalProperty>
+						<cbc:ID>1000</cbc:ID>
+						<cbc:Name>Monto en Letras</cbc:Name>
+						<cbc:Value><![CDATA[SON:  UN MIL CIENTO NOVENTA Y UNO Y 80/100  SOLES]]></cbc:Value>
+					</sac:AdditionalProperty>
+				</sac:AdditionalInformation>
+			</ext:ExtensionContent>
+		</ext:UBLExtension>
+	</ext:UBLExtensions>
+	<cbc:UBLVersionID>2.0</cbc:UBLVersionID>
+	<cbc:CustomizationID>1.0</cbc:CustomizationID>
+	<cbc:ID>BB99-00745</cbc:ID>
+	<!-- BOLETA OK-->
+	<cbc:IssueDate>2017-09-18</cbc:IssueDate>
+	<cbc:InvoiceTypeCode>03</cbc:InvoiceTypeCode>
+	<cbc:DocumentCurrencyCode>PEN</cbc:DocumentCurrencyCode>
+	<cac:DespatchDocumentReference>
+		<cbc:ID>0001-1234567</cbc:ID>
+		<cbc:DocumentTypeCode>09</cbc:DocumentTypeCode>
+		<cbc:DocumentType><![CDATA[GUIA DE REMISION REMITENTE]]></cbc:DocumentType>
+	</cac:DespatchDocumentReference>
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>2</cbc:ID>
+		<cbc:DocumentTypeCode>04</cbc:DocumentTypeCode>
+		<cbc:DocumentType><![CDATA[ TICKET ENAPU ]]></cbc:DocumentType>
+	</cac:AdditionalDocumentReference>
+	<cac:Signature>
+		<cbc:ID>BB99-00745</cbc:ID>
+		<cac:SignatoryParty>
+			<cac:PartyIdentification>
+				<cbc:ID>20338570041</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name><![CDATA[SUNAT]]></cbc:Name>
+			</cac:PartyName>
+		</cac:SignatoryParty>
+		<cac:DigitalSignatureAttachment>
+			<cac:ExternalReference>
+				<cbc:URI>BB99-00745</cbc:URI>
+			</cac:ExternalReference>
+		</cac:DigitalSignatureAttachment>
+	</cac:Signature>
+	<cac:AccountingSupplierParty>
+		<cbc:CustomerAssignedAccountID>20338570041</cbc:CustomerAssignedAccountID>
+		<cbc:AdditionalAccountID>6</cbc:AdditionalAccountID>
+		<cac:Party>
+			<cac:PartyName>
+				<cbc:Name><![CDATA[PRAXAIR PERU SRL]]></cbc:Name>
+				<!--<cbc:Name><![CDATA[-]]></cbc:Name>-->
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:ID>160201</cbc:ID>
+				<cbc:StreetName><![CDATA[Av Venezuela Nro. 2597]]></cbc:StreetName>
+				<cbc:CitySubdivisionName>San Eugenio 2</cbc:CitySubdivisionName>
+				<cbc:CityName>LIMA</cbc:CityName>
+				<cbc:CountrySubentity>LIMA 3</cbc:CountrySubentity>
+				<cbc:District>LIMA 21</cbc:District>
+				<cac:Country>
+					<cbc:IdentificationCode>VE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName><![CDATA[PRAXAIR PERU SRL]]></cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<cac:AccountingCustomerParty>
+		<cbc:CustomerAssignedAccountID>07976340</cbc:CustomerAssignedAccountID>
+		<cbc:AdditionalAccountID>1</cbc:AdditionalAccountID>
+		<cac:Party>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName><![CDATA[MAYORSA S.A.]]></cbc:RegistrationName>
+				<cac:RegistrationAddress>
+					<cbc:StreetName><![CDATA[JR.MARIA PARADO DE B ALT MER LOBATON. LIMA]]></cbc:StreetName>
+					<cac:Country>
+						<cbc:IdentificationCode>PE</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:RegistrationAddress>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="PEN">10.00</cbc:TaxAmount>
+		<cac:TaxSubtotal>
+			<cbc:TaxAmount currencyID="PEN">10.00</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cac:TaxScheme>
+					<cbc:ID>2000</cbc:ID>
+					<cbc:Name>ISC</cbc:Name>
+					<cbc:TaxTypeCode>EXC</cbc:TaxTypeCode>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="PEN">271.80</cbc:TaxAmount>
+		<cac:TaxSubtotal>
+			<cbc:TaxAmount currencyID="PEN">271.80</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cac:TaxScheme>
+					<cbc:ID>1000</cbc:ID>
+					<cbc:Name>IGV</cbc:Name>
+					<cbc:TaxTypeCode>VAT</cbc:TaxTypeCode>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<cac:LegalMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="PEN">1500.00</cbc:LineExtensionAmount>
+		<cbc:PayableAmount currencyID="PEN">1781.80</cbc:PayableAmount>
+	</cac:LegalMonetaryTotal>
+	<cac:InvoiceLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="NIU">1.00</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="PEN">1000.00</cbc:LineExtensionAmount>
+		<cbc:FreeOfChargeIndicator>false</cbc:FreeOfChargeIndicator>
+		<cac:PricingReference>
+			<cac:AlternativeConditionPrice>
+				<cbc:PriceAmount currencyID="PEN">1191.80</cbc:PriceAmount>
+				<cbc:PriceTypeCode>01</cbc:PriceTypeCode>
+			</cac:AlternativeConditionPrice>
+		</cac:PricingReference>
+		<cac:AllowanceCharge>
+			<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+			<cbc:Amount currencyID="PEN">0.00</cbc:Amount>
+		</cac:AllowanceCharge>
+		<cac:TaxTotal>
+			<cbc:TaxAmount currencyID="PEN">181.80</cbc:TaxAmount>
+			<cac:TaxSubtotal>
+				<cbc:TaxAmount currencyID="PEN">181.80</cbc:TaxAmount>
+				<cbc:Percent>18.00</cbc:Percent>
+				<cac:TaxCategory>
+					<cbc:TaxExemptionReasonCode>10</cbc:TaxExemptionReasonCode>
+					<cac:TaxScheme>
+						<cbc:ID>1000</cbc:ID>
+						<cbc:Name>IGV</cbc:Name>
+						<cbc:TaxTypeCode>VAT</cbc:TaxTypeCode>
+					</cac:TaxScheme>
+				</cac:TaxCategory>
+			</cac:TaxSubtotal>
+		</cac:TaxTotal>
+		<cac:TaxTotal>
+			<cbc:TaxAmount currencyID="PEN">10.00</cbc:TaxAmount>
+			<cac:TaxSubtotal>
+				<cbc:TaxAmount currencyID="PEN">10.00</cbc:TaxAmount>
+				<cbc:Percent>10.00</cbc:Percent>
+				<cac:TaxCategory>
+					<cbc:TierRange>01</cbc:TierRange>
+					<cac:TaxScheme>
+						<cbc:ID>2000</cbc:ID>
+						<cbc:Name>ISC</cbc:Name>
+						<cbc:TaxTypeCode>EXC</cbc:TaxTypeCode>
+					</cac:TaxScheme>
+				</cac:TaxCategory>
+			</cac:TaxSubtotal>
+		</cac:TaxTotal>
+		<cac:Item>
+			<cbc:Description><![CDATA[ PRUEBA ISC ]]></cbc:Description>
+			<cac:SellersItemIdentification>
+				<cbc:ID>0001</cbc:ID>
+			</cac:SellersItemIdentification>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="PEN">1000.00</cbc:PriceAmount>
+		</cac:Price>
+	</cac:InvoiceLine>
+	<cac:InvoiceLine>
+		<cbc:ID>2</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="NIU">1.00</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="PEN">500.00</cbc:LineExtensionAmount>
+		<cbc:FreeOfChargeIndicator>true</cbc:FreeOfChargeIndicator>
+		<cac:PricingReference>
+			<cac:AlternativeConditionPrice>
+				<cbc:PriceAmount currencyID="PEN">590.00</cbc:PriceAmount>
+				<cbc:PriceTypeCode>02</cbc:PriceTypeCode>
+			</cac:AlternativeConditionPrice>
+		</cac:PricingReference>
+		<cac:AllowanceCharge>
+			<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+			<cbc:Amount currencyID="PEN">0.00</cbc:Amount>
+		</cac:AllowanceCharge>
+		<cac:TaxTotal>
+			<cbc:TaxAmount currencyID="PEN">90.00</cbc:TaxAmount>
+			<cac:TaxSubtotal>
+				<cbc:TaxAmount currencyID="PEN">90.00</cbc:TaxAmount>
+				<cbc:Percent>18.00</cbc:Percent>
+				<cac:TaxCategory>
+					<cbc:TaxExemptionReasonCode>11</cbc:TaxExemptionReasonCode>
+					<cac:TaxScheme>
+						<cbc:ID>1000</cbc:ID>
+						<cbc:Name>IGV</cbc:Name>
+						<cbc:TaxTypeCode>VAT</cbc:TaxTypeCode>
+					</cac:TaxScheme>
+				</cac:TaxCategory>
+			</cac:TaxSubtotal>
+		</cac:TaxTotal>
+		<cac:Item>
+			<cbc:Description><![CDATA[ PRUEBA GRATUITO ***** PREMIO ***** ]]></cbc:Description>
+			<cac:SellersItemIdentification>
+				<cbc:ID>0002</cbc:ID>
+			</cac:SellersItemIdentification>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="PEN">0.00</cbc:PriceAmount>
+		</cac:Price>
+	</cac:InvoiceLine>
+</Invoice>

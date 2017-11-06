@@ -24,6 +24,14 @@ $container['serializer'] = function ($c) {
     return new Serializer($normalizers, $encoders);
 };
 
+$container['dir_xml'] = function () {
+    return __DIR__.'/data';
+};
+
+$container['xml.repo'] = function ($c) {
+    return new \Greenter\Sunat\Repository\XmlRepository($c->get('dir_xml'));
+};
+
 $container['parser.invoice'] = function () {
     return new \Greenter\Xml\Parser\InvoiceParser();
 };
@@ -32,6 +40,6 @@ $container['parser.note'] = function () {
     return new \Greenter\Xml\Parser\NoteParser();
 };
 
-$container['dir_xml'] = function () {
-    return __DIR__.'/data/';
+$container['parser.rrhh'] = function () {
+    return new \Greenter\Xml\Parser\ReceiptParser();
 };

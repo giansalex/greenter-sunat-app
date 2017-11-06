@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by izegarrav (EMBRACE) -->
+<DebitNote xmlns="urn:oasis:names:specification:ubl:schema:xsd:DebitNote-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ccts="urn:un:unece:uncefact:documentation:2" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2" xmlns:sac="urn:sunat:names:specification:ubl:peru:schema:xsd:SunatAggregateComponents-1" xmlns:udt="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<ext:UBLExtensions>
+		<ext:UBLExtension>
+			<ext:ExtensionContent>
+				<DatosAdicionales>
+					<Documento>
+						<Nombre>20338570041-08-FB99-00001</Nombre>
+					</Documento>
+					<DatoAdicional>
+						<Codigo>01</Codigo>
+						<Valor>220567</Valor>
+					</DatoAdicional>
+					<DatoAdicional>
+						<Codigo>02</Codigo>
+						<Valor> SETENTA CON 59/100    DOLARES AMERICANOS</Valor>
+					</DatoAdicional>
+					<DatoAdicional>
+						<Codigo>03</Codigo>
+						<Valor>: REGULARIZACI�N DEL VALOR FACTURADO*: DEBE SER:   30.29*: VALOR FACTURADO:  30.00*</Valor>
+					</DatoAdicional>
+					<DatoAdicional>
+						<Codigo>04</Codigo>
+						<Valor>-</Valor>
+					</DatoAdicional>
+					<DatoAdicional>
+						<Codigo>05</Codigo>
+						<Valor>VIAJE TERRESTRE*PRODUCTO: TORTA DE FILTRO (PELLET FEED)*ORDEN DE COMPRA N� 4500017544*</Valor>
+					</DatoAdicional>
+					<DatoAdicional>
+						<Codigo>06</Codigo>
+						<Valor>-</Valor>
+					</DatoAdicional>
+					<DatoAdicional>
+						<Codigo>07</Codigo>
+						<Valor>-</Valor>
+					</DatoAdicional>
+					<DatoAdicional>
+						<Codigo>08</Codigo>
+						<Valor>-</Valor>
+					</DatoAdicional>
+					<DatoAdicional>
+						<Codigo>09</Codigo>
+						<Valor>DR.121224| CR.401111| CR.702653*</Valor>
+					</DatoAdicional>
+					<DatoAdicional>
+						<Codigo>10</Codigo>
+						<Valor>-</Valor>
+					</DatoAdicional>
+				</DatosAdicionales>
+			</ext:ExtensionContent>
+		</ext:UBLExtension>
+		<ext:UBLExtension>
+			<ext:ExtensionContent>
+				<sac:AdditionalInformation>
+					<sac:AdditionalMonetaryTotal>
+						<cbc:ID>1001</cbc:ID>
+						<cbc:PayableAmount currencyID="USD">59.82</cbc:PayableAmount>
+					</sac:AdditionalMonetaryTotal>
+					<sac:AdditionalMonetaryTotal>
+						<cbc:ID>1002</cbc:ID>
+						<cbc:PayableAmount currencyID="USD">0.00</cbc:PayableAmount>
+					</sac:AdditionalMonetaryTotal>
+					<sac:AdditionalMonetaryTotal>
+						<cbc:ID>1003</cbc:ID>
+						<cbc:PayableAmount currencyID="USD">0.00</cbc:PayableAmount>
+					</sac:AdditionalMonetaryTotal>
+				</sac:AdditionalInformation>
+			</ext:ExtensionContent>
+		</ext:UBLExtension>
+	</ext:UBLExtensions>
+	<cbc:UBLVersionID>2.0</cbc:UBLVersionID>
+	<cbc:CustomizationID>1.0</cbc:CustomizationID>
+	<cbc:ID>FB99-00430</cbc:ID>
+	<cbc:IssueDate>2017-08-10</cbc:IssueDate>
+	<cbc:DocumentCurrencyCode>USD</cbc:DocumentCurrencyCode>
+	<cac:DiscrepancyResponse>
+		<cbc:ReferenceID>FG99-1306</cbc:ReferenceID>
+		<cbc:ResponseCode>02</cbc:ResponseCode>
+		<cbc:Description>hfffffffffffffffffffffdddsoiiiiiiizihg ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooodfighahfodododododododododododododododododododododododododododododododododododododododododododododododododododododododododododododoj</cbc:Description>
+	</cac:DiscrepancyResponse>
+	<cac:BillingReference>
+		<cac:InvoiceDocumentReference>
+			<cbc:ID>FG99-1306</cbc:ID>
+			<cbc:DocumentTypeCode>01</cbc:DocumentTypeCode>
+		</cac:InvoiceDocumentReference>
+	</cac:BillingReference>
+	<cac:Signature>
+		<cbc:ID>IDSign20338570041</cbc:ID>
+		<cac:SignatoryParty>
+			<cac:PartyIdentification>
+				<cbc:ID>20338570041</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>SHOUGANG HIERRO PERU S.A.A.</cbc:Name>
+			</cac:PartyName>
+		</cac:SignatoryParty>
+		<cac:DigitalSignatureAttachment>
+			<cac:ExternalReference>
+				<cbc:URI>#Signature2033857004</cbc:URI>
+			</cac:ExternalReference>
+		</cac:DigitalSignatureAttachment>
+	</cac:Signature>
+	<cac:AccountingSupplierParty>
+		<cbc:CustomerAssignedAccountID>20338570041</cbc:CustomerAssignedAccountID>
+		<cbc:AdditionalAccountID>6</cbc:AdditionalAccountID>
+		<cac:Party>
+			<cac:PartyName>
+				<cbc:Name>SHOUGANG HIERRO PERU S.A.A.</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:ID>150113</cbc:ID>
+				<cbc:StreetName>AV. REPUBLICA DE CHILE 262 JESUS MARIA , LIMA-LIMA</cbc:StreetName>
+				<cbc:CitySubdivisionName/>
+				<cbc:CityName/>
+				<cbc:CountrySubentity/>
+				<cbc:District/>
+				<cac:Country>
+					<cbc:IdentificationCode>PE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>SHOUGANG HIERRO PERU S.A.A.</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<cac:AccountingCustomerParty>
+		<cbc:CustomerAssignedAccountID>20100255325</cbc:CustomerAssignedAccountID>
+		<cbc:AdditionalAccountID>6</cbc:AdditionalAccountID>
+		<cac:Party>
+			<cac:PhysicalLocation>
+				<cbc:Description>AV. INDUSTRIAL N� 491 Z.I. LIMA INDUSTRIAL - LIMA</cbc:Description>
+			</cac:PhysicalLocation>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>ARIS INDUSTRIAL S.A.</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="USD">10.77</cbc:TaxAmount>
+		<cac:TaxSubtotal>
+			<cbc:TaxAmount currencyID="USD">10.77</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cac:TaxScheme>
+					<cbc:ID>1000</cbc:ID>
+					<cbc:Name>IGV</cbc:Name>
+					<cbc:TaxTypeCode>VAT</cbc:TaxTypeCode>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<cac:RequestedMonetaryTotal>
+		<cbc:PayableAmount currencyID="USD">700000000000.59</cbc:PayableAmount>
+	</cac:RequestedMonetaryTotal>
+	<cac:DebitNoteLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:DebitedQuantity unitCode="TNE">0.2900000000</cbc:DebitedQuantity>
+		<cbc:LineExtensionAmount currencyID="USD">59.82</cbc:LineExtensionAmount>
+		<cac:PricingReference>
+			<cac:AlternativeConditionPrice>
+				<cbc:PriceAmount currencyID="USD">243.3986</cbc:PriceAmount>
+				<cbc:PriceTypeCode>01</cbc:PriceTypeCode>
+			</cac:AlternativeConditionPrice>
+		</cac:PricingReference>
+		<cac:TaxTotal>
+			<cbc:TaxAmount currencyID="USD">10.77</cbc:TaxAmount>
+			<cac:TaxSubtotal>
+				<cbc:TaxAmount currencyID="USD">10.77</cbc:TaxAmount>
+				<cac:TaxCategory>
+					<cbc:TaxExemptionReasonCode>10</cbc:TaxExemptionReasonCode>
+					<cac:TaxScheme>
+						<cbc:ID>1000</cbc:ID>
+						<cbc:Name>IGV</cbc:Name>
+						<cbc:TaxTypeCode>VAT</cbc:TaxTypeCode>
+					</cac:TaxScheme>
+				</cac:TaxCategory>
+			</cac:TaxSubtotal>
+		</cac:TaxTotal>
+		<cac:Item>
+			<cbc:Description>DIFERENCIA POR DEBITAR</cbc:Description>
+			<cac:SellersItemIdentification>
+				<cbc:ID>1234567</cbc:ID>
+			</cac:SellersItemIdentification>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="USD">206.2700000000</cbc:PriceAmount>
+		</cac:Price>
+	</cac:DebitNoteLine>
+</DebitNote>

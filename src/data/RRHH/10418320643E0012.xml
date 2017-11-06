@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><?xml-stylesheet type="text/xsl" href="recibo.xsl"?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ccts="urn:oasis:names:specification:ubl:schema:xsd:CoreComponentParameters-2" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2" xmlns:stat="urn:oasis:names:specification:ubl:schema:xsd:DocumentStatusCode-1.0" xmlns:udt="urn:un:unece:uncefact:data:draft:UnqualifiedDataTypesSchemaModule:2">
+	<ext:UBLExtensions>
+		<ext:UBLExtension>
+		</ext:UBLExtension>
+	</ext:UBLExtensions>
+	<cbc:ID>E001-2</cbc:ID>
+	<cbc:IssueDate>2017-10-30</cbc:IssueDate>
+	<cbc:IssueTime>16:50:10</cbc:IssueTime>
+	
+	
+	<cbc:ExpiryDate/>
+	
+	
+	<cbc:InvoiceTypeCode>01</cbc:InvoiceTypeCode>
+	<cbc:Note> UN MIL TRESCIENTOS Y 00/100 SOLES</cbc:Note>
+       <cac:OrderReference>
+		<cbc:ID>E001-2</cbc:ID>
+		<cac:DocumentReference>			
+				<cbc:ID>1</cbc:ID>
+				<cbc:IssueDate>2017-10-30</cbc:IssueDate>
+				<cbc:DocumentTypeCode>0</cbc:DocumentTypeCode>
+				<cbc:DocumentType>-</cbc:DocumentType>
+											
+		</cac:DocumentReference>
+	</cac:OrderReference>
+
+	<cac:Signature>
+		<cbc:ID>0001-0001</cbc:ID>
+		<cac:SignatoryParty>
+			<cac:PartyName>
+				<cbc:Name>-</cbc:Name>
+			</cac:PartyName>
+		</cac:SignatoryParty>
+		<cac:DigitalSignatureAttachment>
+			<cac:ExternalReference>
+				<cbc:URI>sunatSign</cbc:URI>
+			</cac:ExternalReference>
+		</cac:DigitalSignatureAttachment>
+	</cac:Signature>
+
+
+
+
+	<cac:AccountingSupplierParty>
+		<cbc:CustomerAssignedAccountID>10418320643</cbc:CustomerAssignedAccountID>
+		<cac:Party>
+			<cac:PartyName>
+				<cbc:Name>REYNAGA SORIA JOSE                                                                                  </cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>2 PISO URB. M.C. DE CARBONERA MOQUEGUA MARISCAL NIETO MOQUEGUA </cbc:StreetName>
+				<cbc:BuildingNumber/>
+				<cbc:CityName/>
+				<cbc:CountrySubentity/>
+				<cac:Country>
+					<cbc:IdentificationCode>PE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+                  <cac:Contact>
+				<cbc:Telephone/>				
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<cac:AccountingCustomerParty>
+		<cbc:CustomerAssignedAccountID>08327579</cbc:CustomerAssignedAccountID>
+		<cbc:AdditionalAccountID>1</cbc:AdditionalAccountID>
+	
+	
+	<cac:Party>
+			<cac:PartyName>
+				<cbc:Name>VALERIANO CAÑAPATAÑA HUANCA</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName/>
+				<cbc:BuildingNumber/>
+				<cbc:CityName/>
+				<cbc:CountrySubentity/>
+				<cac:Country>
+					<cbc:IdentificationCode/>
+				</cac:Country>
+			</cac:PostalAddress>
+                  <cac:Contact>
+				<cbc:Telephone/>				
+			</cac:Contact>
+		</cac:Party>
+	
+	
+	
+				
+	</cac:AccountingCustomerParty>
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="PEN">0.00</cbc:TaxAmount>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="PEN">1300.00</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="PEN">0.00</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cbc:ID>A</cbc:ID>
+				<cac:TaxScheme/>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<cac:LegalMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="PEN">0.00</cbc:LineExtensionAmount>
+		<cbc:TaxExclusiveAmount currencyID="PEN">0.00</cbc:TaxExclusiveAmount>
+		<cbc:PayableAmount currencyID="PEN">1300.00</cbc:PayableAmount>
+	</cac:LegalMonetaryTotal>
+	<cac:InvoiceLine>
+		<cbc:ID>0001</cbc:ID>
+		<cbc:Note>DDSDSDSDSDS  </cbc:Note>
+		<cbc:InvoicedQuantity unitCode="ZZ">0.00</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="PEN">0.00</cbc:LineExtensionAmount>
+		<cac:OrderLineReference>
+			<cbc:LineID>1</cbc:LineID>
+		</cac:OrderLineReference>
+		<cac:TaxTotal>
+			<cbc:TaxAmount currencyID="PEN">10.00</cbc:TaxAmount>
+			<cac:TaxSubtotal>
+				<cbc:TaxAmount currencyID="PEN">0.00</cbc:TaxAmount>
+				<cbc:Percent>8.00</cbc:Percent>
+				<cac:TaxCategory>
+					<cbc:ID>RET 4TA</cbc:ID>
+					<cbc:Name/>
+					<cac:TaxScheme/>
+				</cac:TaxCategory>
+			</cac:TaxSubtotal>
+		</cac:TaxTotal>
+		<cac:Item>
+			<cbc:Description>DSDSDSDDS  </cbc:Description>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="PEN">10.00</cbc:PriceAmount>
+		</cac:Price>
+	</cac:InvoiceLine>
+
+
+     
+
+</Invoice>

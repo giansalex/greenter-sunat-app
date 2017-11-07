@@ -1,3 +1,6 @@
 # GREENTER SUNAT - APP
 
-Consulta de documentos electronicos en formato JSON.
+API para consulta de documentos electrónicos en formato JSON.
+
+## Docs
+[Swagger Docs](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/giansalex/greenter-sunat-app/master/src/data/swagger.json)  

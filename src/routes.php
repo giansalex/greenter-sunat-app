@@ -3,11 +3,8 @@
 use Slim\Http\Response;
 
 // Routes
-$app->get('/', function ($request, Response $response, array $args) {
-    $response->getBody()->write('<h1>GREENTER APP</h1>');
-
-    return $response->withStatus(200);
-});
+$app->get('/', 'Greenter\Sunat\Controller\HomeController:index');
+$app->get('/swagger', 'Greenter\Sunat\Controller\HomeController:swagger');
 
 $app->group('/api/v1', function () {
     $this->get('/sale/{ruc:[0-9]+}', 'Greenter\Sunat\Controller\SaleController:invoice');

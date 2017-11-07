@@ -11,3 +11,12 @@
 //    "secret" => $container['settings']['jwt']['secret'],
 //    "algorithm" => ["HS256"],
 //]));
+
+$app->add(new \Tuupola\Middleware\Cors([
+    "origin" => ["*"],
+    "methods" => ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    "headers.allow" => ["Authorization", "Accept", "Content-Type"],
+    "headers.expose" => [],
+    "credentials" => false,
+    "cache" => 0,
+]));

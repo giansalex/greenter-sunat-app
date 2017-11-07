@@ -61,7 +61,7 @@ HTML;
     {
         $uri = $request->getUri();
         $url = $uri->getHost();
-        if ($url && $uri->getPort() != 80) {
+        if ($uri->getPort() && $uri->getPort() !== 80) {
             $url .= ':' . $uri->getPort();
         }
 

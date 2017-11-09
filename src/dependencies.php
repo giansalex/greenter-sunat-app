@@ -24,10 +24,6 @@ $container['serializer'] = function ($c) {
     return new Serializer($normalizers, $encoders);
 };
 
-$container['dir_xml'] = function () {
-    return __DIR__.'/data';
-};
-
 $container['validator'] = function () {
     return new \Greenter\Sunat\Service\UserValidator();
 };
@@ -49,7 +45,7 @@ $container['repository.profile'] = function ($c) {
 };
 
 $container['xml.repo'] = function ($c) {
-    return new \Greenter\Sunat\Repository\XmlRepository($c->get('dir_xml'));
+    return new \Greenter\Sunat\Repository\XmlRepository($c->get('settings')['dir_xml']);
 };
 
 $container['parser.invoice'] = function () {

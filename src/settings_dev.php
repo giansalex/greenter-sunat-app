@@ -7,7 +7,7 @@ return [
 
         // Db
         'db' => [
-            'dsn' => 'sqlite:'. $curren_dir.'/data/greenter.sqlite',
+            'dsn' => 'sqlite:'. $curren_dir.'/../data/greenter.sqlite',
             'user' => null,
             'pass' => null,
         ],
@@ -16,6 +16,9 @@ return [
         'jwt' => [
             'secret' => 'ak5lkji3bAioTjm'
         ],
+
+        // Xml directory
+        'dir_xml' => $curren_dir.'/../data',
 
         // Monolog settings
         'logger' => [

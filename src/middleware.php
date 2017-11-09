@@ -8,7 +8,7 @@ $container = $app->getContainer();
 //    "secure" => false,
 //    "attribute" => "jwt",
 //    "path" => '/api',
-//    "passthrough" => ["/api/login", "/api/register"],
+//    "passthrough" => ["/api/v1/login", "/api/v1/register"],
 //    "secret" => $container['settings']['jwt']['secret'],
 //    "algorithm" => ["HS256"],
 //]));

@@ -37,7 +37,7 @@ class UserRepository
             $user->getPassword()
         ];
         $con = $this->connection;
-        $stm = $con->prepare('INSERT INTO usuario(email, password) VALUES (?, ?, ?)');
+        $stm = $con->prepare('INSERT INTO usuario(email, password) VALUES (?, ?)');
         $stm->execute($params);
         $id = $con->lastInsertId();
         $con->exec("INSERT INTO perfil(user_id) VALUES($id)");
@@ -45,6 +45,7 @@ class UserRepository
 
         return $user;
     }
+
     /**
      * @param string $email
      * @return bool
@@ -57,6 +58,7 @@ class UserRepository
         $count = $stm->fetchColumn();
         return $count > 0;
     }
+
     /**
      * @param $email
      * @param $password

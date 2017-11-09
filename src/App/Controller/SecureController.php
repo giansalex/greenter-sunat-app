@@ -52,13 +52,13 @@ class SecureController
         $params = $request->getParsedBody();
 
         $res = $this->container->get('validator')->login($params);
-        if ($res['sucess'] === false) {
+        if ($res['success'] === false) {
             return $response->withJson(['message' => $res['message']], 400);
         }
 
         /**@var $repo UserRepository*/
         $repo = $this->container->get('repository.user');
-        $user = $repo->get($params['email'], $params['passowrd']);
+        $user = $repo->get($params['email'], $params['password']);
 
         if ($user === false) {
             return $response->withJson(['message' => 'credenciales inválidas'], 400);
@@ -79,15 +79,20 @@ class SecureController
         $params = $request->getParsedBody();
 
         $res = $this->container->get('validator')->register($params);
-        if ($res['sucess'] === false) {
+        if ($res['success'] === false) {
             return $response->withJson(['message' => $res['message']], 400);
         }
+
+        /**@var $repo UserRepository*/
+        $repo = $this->container->get('repository.user');
+        if ($repo->exist($params['email'])) {
+            return $response->withJson(['message' => 'email ya registrado'], 400);
+        }
+
         $user = new User();
         $user->setEmail($params['email'])
             ->setPlainPassword($params['password']);
 
-        /**@var $repo UserRepository*/
-        $repo = $this->container->get('repository.user');
         $user = $repo->add($user);
 
         return $this->withTokenById($response, $user->getId());
@@ -106,6 +111,6 @@ class SecureController
         ];
         $token = JWT::encode($data, $this->secret);
 
-        return $response->withJson(['token' => $token]);
+        return $response->withJson(['token' => $token], 200);
     }
 }

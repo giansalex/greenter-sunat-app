@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "Aplicacion para MYPEs empleando sus comprobantes electrónicos",
+    "description": "Aplicación para MYPEs empleando sus comprobantes electrónicos",
     "version": "1.0.0",
     "title": "Grenter App",
     "contact": {
@@ -11,6 +11,10 @@
   "host": "greenter.api",
   "basePath": "/api/v1",
   "tags": [
+    {
+      "name": "secure",
+      "description": "Autenticación de usuario"
+    },
     {
       "name": "sale",
       "description": "Facturas y Boletas"
@@ -28,6 +32,70 @@
     "http"
   ],
   "paths": {
+    "/login": {
+      "post": {
+        "tags": [
+          "secure"
+        ],
+        "summary": "Autenticacion del usuario",
+        "description": "Autenticacion del usuario",
+        "operationId": "login",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Credenciales del usuario",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AuthResponse"
+            }
+          }
+        }
+      }
+    },
+    "/register": {
+      "post": {
+        "tags": [
+          "secure"
+        ],
+        "summary": "Registro de nuevo usuario",
+        "description": "Registro de nuevo usuario",
+        "operationId": "register",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Datos del usuario",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserRegister"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AuthResponse"
+            }
+          }
+        }
+      }
+    },
     "/sale/{ruc}": {
       "get": {
         "tags": [
@@ -633,6 +701,48 @@
           "format": "float"
         },
         "name": {
+          "type": "string"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "required": [
+        "email",
+        "password"
+      ],
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "UserRegister": {
+      "type": "object",
+      "required": [
+        "email",
+        "password",
+        "repeat_password"
+      ],
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "repeat_password": {
+          "type": "string"
+        }
+      }
+    },
+    "AuthResponse": {
+      "type": "object",
+      "properties": {
+        "token": {
           "type": "string"
         }
       }

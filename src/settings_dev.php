@@ -2,7 +2,7 @@
 $curren_dir = __DIR__;
 return [
     'settings' => [
-        'displayErrorDetails' => false, // set to false in production
+        'displayErrorDetails' => true, // set to false in production
         'addContentLengthHeader' => false, // Allow the web server to send the content-length header
 
         // Db
@@ -20,8 +20,8 @@ return [
         // Monolog settings
         'logger' => [
             'name' => 'slim-app',
-            'path' => $curren_dir . '/../logs/app.log',
-            'level' => \Monolog\Logger::INFO,
+            'path' => isset($_ENV['docker']) ? 'php://stdout' : $curren_dir . '/../logs/app.log',
+            'level' => \Monolog\Logger::DEBUG,
         ],
     ],
 ];

@@ -1,10 +1,10 @@
 <?php
 
-use Slim\Http\Response;
-
 // Routes
 $app->get('/', 'Greenter\Sunat\Controller\HomeController:index');
 $app->get('/swagger', 'Greenter\Sunat\Controller\HomeController:swagger');
+$app->post('/login', 'Greenter\Sunat\Controller\SecureController:login');
+$app->post('/register', 'Greenter\Sunat\Controller\SecureController:register');
 
 $app->group('/api/v1', function () {
     $this->get('/sale/{ruc:[0-9]+}', 'Greenter\Sunat\Controller\SaleController:invoice');

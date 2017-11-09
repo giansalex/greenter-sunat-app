@@ -15,34 +15,25 @@ namespace Greenter\Sunat\Repository;
 class DbConnection
 {
     /**
-     * @var string
+     * @var array
      */
-    private $dsn;
-    /**
-     * @var string
-     */
-    private $user;
-    /**
-     * @var string
-     */
-    private $pass;
+    private $params;
+
     /**
      * DbConnection constructor.
-     * @param string $dsn
-     * @param string $user
-     * @param string $pass
+     * @param array $params
      */
-    public function __construct($dsn, $user, $pass)
+    public function __construct($params)
     {
-        $this->dsn = $dsn;
-        $this->user = $user;
-        $this->pass = $pass;
+        $this->params = $params;
     }
+
     /**
      * @return \PDO
      */
     public function createConnection()
     {
-        return new \PDO($this->dsn, $this->user,$this->pass);
+        $args = $this->params;
+        return new \PDO($args['dsn'], $args['user'], $args['pass']);
     }
 }

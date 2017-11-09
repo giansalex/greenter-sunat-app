@@ -1,4 +1,5 @@
 <?php
+$curren_dir = __DIR__;
 return [
     'settings' => [
         'displayErrorDetails' => true, // set to false in production
@@ -6,16 +7,25 @@ return [
 
         // Renderer settings
         'renderer' => [
-            'template_path' => __DIR__ . '/../templates/',
+            'template_path' => $curren_dir . '/../templates/',
         ],
 
+        // Db
+        'db' => [
+            'dsn' => 'sqlite:'. $curren_dir.'/data/greenter.sqlite',
+            'user' => null,
+            'pass' => null,
+        ],
+
+        // JWT
         'jwt' => [
             'secret' => 'ak5lkji3bAioTjm'
         ],
+
         // Monolog settings
         'logger' => [
             'name' => 'slim-app',
-            'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
+            'path' => isset($_ENV['docker']) ? 'php://stdout' : $curren_dir . '/../logs/app.log',
             'level' => \Monolog\Logger::DEBUG,
         ],
     ],

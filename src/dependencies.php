@@ -28,6 +28,26 @@ $container['dir_xml'] = function () {
     return __DIR__.'/data';
 };
 
+$container['validator'] = function () {
+    return new \Greenter\Sunat\Service\UserValidator();
+};
+
+$container['validator'] = function () {
+    return new \Greenter\Sunat\Service\UserValidator();
+};
+
+$container['repository.db'] = function ($c) {
+    return new \Greenter\Sunat\Repository\DbConnection($c->get('settings')['db']);
+};
+
+$container['repository.user'] = function ($c) {
+    return new \Greenter\Sunat\Repository\UserRepository($c->get('repository.db'));
+};
+
+$container['repository.profile'] = function ($c) {
+    return new \Greenter\Sunat\Repository\ProfileRepository($c->get('repository.db'));
+};
+
 $container['xml.repo'] = function ($c) {
     return new \Greenter\Sunat\Repository\XmlRepository($c->get('dir_xml'));
 };

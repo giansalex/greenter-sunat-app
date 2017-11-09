@@ -1,13 +1,14 @@
 <?php
 // Application middleware
 
-// e.g: $app->add(new \Slim\Csrf\Guard);
+$container = $app->getContainer();
+
 // JWT
 //$app->add(new \Slim\Middleware\JwtAuthentication([
 //    "secure" => false,
 //    "attribute" => "jwt",
 //    "path" => '/api',
-//    "passthrough" => ["/api/v1/auth"],
+//    "passthrough" => ["/api/login", "/api/register"],
 //    "secret" => $container['settings']['jwt']['secret'],
 //    "algorithm" => ["HS256"],
 //]));

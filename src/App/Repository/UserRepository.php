@@ -42,6 +42,7 @@ class UserRepository
         $id = $con->lastInsertId();
         $con->exec("INSERT INTO perfil(user_id) VALUES($id)");
         $user->setId($id);
+
         return $user;
     }
     /**

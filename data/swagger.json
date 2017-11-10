@@ -13,7 +13,11 @@
   "tags": [
     {
       "name": "secure",
-      "description": "Autenticación de usuario"
+      "description": "Autenticación del usuario"
+    },
+    {
+      "name": "profile",
+      "description": "Perfil del usuario"
     },
     {
       "name": "sale",
@@ -29,16 +33,65 @@
     }
   ],
   "schemes": [
-    "http"
+    "http",
+    "https"
   ],
   "paths": {
+    "/profile": {
+      "get": {
+        "tags": [
+          "profile"
+        ],
+        "summary": "Obtiene el perfil del usuario",
+        "description": "Retorna el perfil del usuario",
+        "operationId": "getProfile",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Profile"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "profile"
+        ],
+        "summary": "Guarda el perfil del usuario",
+        "description": "Guarda el perfil del usuario",
+        "operationId": "saveProfile",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Perfil del usuario",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Profile"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/login": {
       "post": {
         "tags": [
           "secure"
         ],
-        "summary": "Autenticacion del usuario",
-        "description": "Autenticacion del usuario",
+        "summary": "Autenticación del usuario",
+        "description": "Autenticación del usuario",
         "operationId": "login",
         "consumes": [
           "application/json"
@@ -735,6 +788,23 @@
           "type": "string"
         },
         "repeat_password": {
+          "type": "string"
+        }
+      }
+    },
+    "Profile": {
+      "type": "object",
+      "required": [
+        "ruc"
+      ],
+      "properties": {
+        "ruc": {
+          "type": "string"
+        },
+        "razon_social": {
+          "type": "string"
+        },
+        "direccion": {
           "type": "string"
         }
       }

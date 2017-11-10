@@ -8,7 +8,7 @@
       "email": "giansalex@gmail.com"
     }
   },
-  "host": "greenter.api",
+  "host": "localhost:8080",
   "basePath": "/api/v1",
   "tags": [
     {
@@ -55,7 +55,12 @@
               "$ref": "#/definitions/Profile"
             }
           }
-        }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -82,7 +87,12 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
       }
     },
     "/login": {
@@ -179,7 +189,12 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
       }
     },
     "/note/{ruc}": {
@@ -212,7 +227,12 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
       }
     },
     "/rrhh/{ruc}": {
@@ -245,14 +265,20 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
       }
     }
   },
   "securityDefinitions": {
-    "api_key": {
+    "Bearer": {
       "type": "apiKey",
-      "name": "api_key",
+      "name": "Authorization",
+      "description": "Token Authorize",
       "in": "header"
     }
   },

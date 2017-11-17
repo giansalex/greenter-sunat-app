@@ -56,7 +56,6 @@
             "description": "Ruc de la empresa",
             "required": true,
             "type": "string",
-            "maxLength": 11,
             "minLength": 11
           }
         ],
@@ -67,14 +66,50 @@
           "200": {
             "description": "Operacion exitosa",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/RucResponse"
-              }
+              "$ref": "#/definitions/RucResponse"
             }
           },
           "404": {
             "description": "Ruc invalido o no encontrado"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/consult/dni/{dni}": {
+      "get": {
+        "tags": [
+          "consult"
+        ],
+        "summary": "Retorna datos de la persona",
+        "description": "Retorna informacion segun el dni",
+        "operationId": "getByDni",
+        "parameters": [
+          {
+            "name": "dni",
+            "in": "path",
+            "description": "Dni de la persona",
+            "required": true,
+            "type": "string",
+            "minLength": 8
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Operacion exitosa",
+            "schema": {
+              "$ref": "#/definitions/DniResponse"
+            }
+          },
+          "404": {
+            "description": "Dni invalido o no encontrado"
           }
         },
         "security": [
@@ -963,6 +998,26 @@
           "type": "string"
         },
         "padrones": {
+          "type": "string"
+        }
+      }
+    },
+    "DniResponse": {
+      "type": "object",
+      "properties": {
+        "dni": {
+          "type": "string"
+        },
+        "nombres": {
+          "type": "string"
+        },
+        "apellidoPaterno": {
+          "type": "string"
+        },
+        "apellidoMaterno": {
+          "type": "string"
+        },
+        "codVerifica": {
           "type": "string"
         }
       }

@@ -63,3 +63,7 @@ $container['parser.rrhh'] = function () {
 $container['consult.ruc'] = function () {
     return new \Peru\Sunat\Ruc();
 };
+
+$container['consult.dni'] = function () {
+    return new \Peru\Reniec\Dni();
+};

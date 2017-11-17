@@ -8,6 +8,7 @@
 
 namespace Greenter\Sunat\Controller;
 
+use Peru\Reniec\Dni;
 use Peru\Sunat\Ruc;
 use Psr\Container\ContainerInterface;
 use Slim\Http\Request;
@@ -51,5 +52,25 @@ class ConsultController
         }
 
         return json_encode(get_object_vars($company));
+    }
+
+    /**
+     * @param Request    $request
+     * @param Response   $response
+     * @param array $args
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function dni($request, $response, $args)
+    {
+        $dni = $args["dni"];
+        /**@var $service Dni */
+        $service = $this->container->get('consult.dni');
+        $person = $service->get($dni);
+        if ($person === false) {
+            $response->getBody()->write($service->getError());
+            return $response->withStatus(404);
+        }
+
+        return json_encode(get_object_vars($person));
     }
 }

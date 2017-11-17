@@ -12,6 +12,10 @@
   "basePath": "/api/v1",
   "tags": [
     {
+      "name": "consult",
+      "description": "Consultas Peru"
+    },
+    {
       "name": "secure",
       "description": "Autenticación del usuario"
     },
@@ -37,6 +41,49 @@
     "https"
   ],
   "paths": {
+    "/consult/ruc/{ruc}": {
+      "get": {
+        "tags": [
+          "consult"
+        ],
+        "summary": "Retorna datos de la empresa",
+        "description": "Retorna informacion segun el ruc",
+        "operationId": "getByRuc",
+        "parameters": [
+          {
+            "name": "ruc",
+            "in": "path",
+            "description": "Ruc de la empresa",
+            "required": true,
+            "type": "string",
+            "maxLength": 11,
+            "minLength": 11
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Operacion exitosa",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RucResponse"
+              }
+            }
+          },
+          "404": {
+            "description": "Ruc invalido o no encontrado"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
     "/profile": {
       "get": {
         "tags": [
@@ -839,6 +886,83 @@
       "type": "object",
       "properties": {
         "token": {
+          "type": "string"
+        }
+      }
+    },
+    "RucResponse": {
+      "type": "object",
+      "properties": {
+        "ruc": {
+          "type": "string"
+        },
+        "razonSocial": {
+          "type": "string"
+        },
+        "nombreComercial": {
+          "type": "string"
+        },
+        "telefonos": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tipo": {
+          "type": "string"
+        },
+        "estado": {
+          "type": "string"
+        },
+        "condicion": {
+          "type": "string"
+        },
+        "direccion": {
+          "type": "string"
+        },
+        "fechaInscripcion": {
+          "type": "string"
+        },
+        "sistEmsion": {
+          "type": "string"
+        },
+        "sistContabilidad": {
+          "type": "string"
+        },
+        "actExterior": {
+          "type": "string"
+        },
+        "actEconomicas": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cpPago": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sistElectronica": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fechaEmisorFe": {
+          "type": "string"
+        },
+        "cpeElectronico": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fechaPle": {
+          "type": "string"
+        },
+        "padrones": {
           "type": "string"
         }
       }

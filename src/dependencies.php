@@ -17,7 +17,7 @@ $container['logger'] = function ($c) {
     return $logger;
 };
 
-$container['serializer'] = function ($c) {
+$container['serializer'] = function () {
     $encoders = array(new JsonEncoder());
     $normalizers = array(new DateTimeNormalizer(), new GetSetMethodNormalizer());
 
@@ -58,4 +58,8 @@ $container['parser.note'] = function () {
 
 $container['parser.rrhh'] = function () {
     return new \Greenter\Xml\Parser\ReceiptParser();
+};
+
+$container['consult.ruc'] = function () {
+    return new \Peru\Sunat\Ruc();
 };

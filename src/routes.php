@@ -5,6 +5,7 @@ $app->get('/', 'Greenter\Sunat\Controller\HomeController:index');
 $app->get('/swagger', 'Greenter\Sunat\Controller\HomeController:swagger');
 
 $app->group('/api/v1', function () {
+    $this->get('/consult/ruc/{ruc}', 'Greenter\Sunat\Controller\ConsultController:ruc');
     $this->post('/login', 'Greenter\Sunat\Controller\SecureController:login');
     $this->post('/register', 'Greenter\Sunat\Controller\SecureController:register');
     $this->get('/profile', 'Greenter\Sunat\Controller\ProfileController:get');

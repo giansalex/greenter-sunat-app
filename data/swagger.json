@@ -8,7 +8,7 @@
       "email": "giansalex@gmail.com"
     }
   },
-  "host": "localhost:8080",
+  "host": "greenter.api",
   "basePath": "/api/v1",
   "tags": [
     {

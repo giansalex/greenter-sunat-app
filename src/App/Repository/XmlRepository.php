@@ -35,7 +35,7 @@ class XmlRepository
      */
     public function getDocuments($ruc, $tipo)
     {
-        $files = glob($this->directPath . DIRECTORY_SEPARATOR . $tipo . DIRECTORY_SEPARATOR . $ruc . '*.xml');
+        $files = glob($this->directPath . DIRECTORY_SEPARATOR . $tipo . DIRECTORY_SEPARATOR . '*.xml');
 
         return $files;
     }

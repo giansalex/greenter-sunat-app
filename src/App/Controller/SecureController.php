@@ -51,7 +51,7 @@ class SecureController
     {
         $params = $request->getParsedBody();
 
-        $res = $this->container->get('validator')->login($params);
+        $res = $this->container->get('service.validator')->login($params);
         if ($res['success'] === false) {
             return $response->withJson(['message' => $res['message']], 400);
         }
@@ -78,7 +78,7 @@ class SecureController
     {
         $params = $request->getParsedBody();
 
-        $res = $this->container->get('validator')->register($params);
+        $res = $this->container->get('service.validator')->register($params);
         if ($res['success'] === false) {
             return $response->withJson(['message' => $res['message']], 400);
         }

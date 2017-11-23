@@ -16,7 +16,7 @@ return [
         'jwt' => [
             'secret' => 'ak5lkji3bAioTjm'
         ],
-
+        'crypto_key' => '6a393eca0a33b1941d0c988',
         // Xml directory
         'dir_xml' => $curren_dir.'/../data',
 

@@ -24,6 +24,10 @@
       "description": "Perfil del usuario"
     },
     {
+      "name": "product-category",
+      "description": "Categoria de Productos"
+    },
+    {
       "name": "sale",
       "description": "Facturas y Boletas"
     },
@@ -110,6 +114,163 @@
           },
           "404": {
             "description": "Dni invalido o no encontrado"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/product/category": {
+      "get": {
+        "tags": [
+          "product-category"
+        ],
+        "summary": "Retorna lista de categorias",
+        "description": "Retorna lista de categorias",
+        "operationId": "getCategories",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Operacion exitosa",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/ProductCategory"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "product-category"
+        ],
+        "summary": "Agrega una nueva categoria",
+        "description": "Agrega una nueva categoria",
+        "operationId": "addCategory",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Nueva categoria",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProductCategory"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Operacion exitosa"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "product-category"
+        ],
+        "summary": "Actualiza una nueva categoria",
+        "description": "Actualiza una nueva categoria",
+        "operationId": "updateCategory",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "categoria a actualizar",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProductCategory"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Operacion exitosa"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/product/category/{id}": {
+      "get": {
+        "tags": [
+          "product-category"
+        ],
+        "summary": "Retorna informacion de una categoria",
+        "description": "Retorna informacion de una categoria",
+        "operationId": "getCategory",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id de la categoria",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Operacion exitosa",
+            "schema": {
+              "$ref": "#/definitions/ProductCategory"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "product-category"
+        ],
+        "summary": "Elimina una categoria",
+        "description": "Elimina una categoria",
+        "operationId": "deleteCategory",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id de la categoria",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Operacion exitosa"
           }
         },
         "security": [
@@ -914,6 +1075,12 @@
         },
         "direccion": {
           "type": "string"
+        },
+        "user_sol": {
+          "type": "string"
+        },
+        "clave_sol": {
+          "type": "string"
         }
       }
     },
@@ -1018,6 +1185,20 @@
           "type": "string"
         },
         "codVerifica": {
+          "type": "string"
+        }
+      }
+    },
+    "ProductCategory": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "code": {
+          "type": "string"
+        },
+        "description": {
           "type": "string"
         }
       }

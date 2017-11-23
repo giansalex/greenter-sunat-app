@@ -52,6 +52,8 @@ class ProfileController
             'ruc' => $profile->getRuc(),
             'razon_social' => $profile->getRazonSocial(),
             'direccion' => $profile->getDireccion(),
+            'user_sol' => $profile->getUserSol(),
+            'clave_sol' => null
         ]);
     }
 
@@ -69,6 +71,8 @@ class ProfileController
         $profile->setRuc($json['ruc'])
             ->setRazonSocial($json['razon_social'])
             ->setDireccion($json['direccion'])
+            ->setUserSol($json['user_sol'])
+            ->setClaveSol($json['clave_sol'])
             ->setUserId($jwt->id);
 
         /**@var $repo ProfileRepository */

@@ -30,6 +30,16 @@ class Profile
     private $direccion;
 
     /**
+     * @var string
+     */
+    private $userSol;
+
+    /**
+     * @var string
+     */
+    private $claveSol;
+
+    /**
      * @var int
      */
     private $userId;
@@ -85,6 +95,42 @@ class Profile
     public function setDireccion($direccion)
     {
         $this->direccion = $direccion;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserSol()
+    {
+        return $this->userSol;
+    }
+
+    /**
+     * @param string $userSol
+     * @return Profile
+     */
+    public function setUserSol($userSol)
+    {
+        $this->userSol = $userSol;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getClaveSol()
+    {
+        return $this->claveSol;
+    }
+
+    /**
+     * @param string $claveSol
+     * @return Profile
+     */
+    public function setClaveSol($claveSol)
+    {
+        $this->claveSol = $claveSol;
         return $this;
     }
 

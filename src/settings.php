@@ -12,6 +12,7 @@ return [
         'jwt' => [
             'secret' => 'ak5lkji3bAioTjm'
         ],
+        'crypto_key' => '6a393eca0a33b1941d0c98f28d233ba4ab4191f8ef',
         'dir_xml' => $curren_dir.'/../data',
         'logger' => [
             'name' => 'slim-app',

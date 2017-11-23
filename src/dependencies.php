@@ -1,6 +1,7 @@
 <?php
 // DIC configuration
 
+use Greenter\Sunat\Controller\CategoryController;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
@@ -24,12 +25,12 @@ $container['serializer'] = function () {
     return new Serializer($normalizers, $encoders);
 };
 
-$container['validator'] = function () {
+$container['service.validator'] = function () {
     return new \Greenter\Sunat\Service\UserValidator();
 };
 
-$container['validator'] = function () {
-    return new \Greenter\Sunat\Service\UserValidator();
+$container['service.crypto'] = function () {
+    return new \Greenter\Sunat\Service\CryptoSecure();
 };
 
 $container['repository.db'] = function ($c) {
@@ -41,7 +42,11 @@ $container['repository.user'] = function ($c) {
 };
 
 $container['repository.profile'] = function ($c) {
-    return new \Greenter\Sunat\Repository\ProfileRepository($c->get('repository.db'));
+    return new \Greenter\Sunat\Repository\ProfileRepository($c);
+};
+
+$container['repository.producto.category'] = function ($c) {
+    return new \Greenter\Sunat\Repository\ProductCategoryRepository($c->get('repository.db'));
 };
 
 $container['xml.repo'] = function ($c) {
@@ -66,4 +71,8 @@ $container['consult.ruc'] = function () {
 
 $container['consult.dni'] = function () {
     return new \Peru\Reniec\Dni();
+};
+
+$container[CategoryController::class] = function ($c) {
+    return new CategoryController($c->get('repository.producto.category'));
 };

@@ -64,6 +64,8 @@ HTML;
         if ($uri->getPort() && $uri->getPort() !== 80) {
             $url .= ':' . $uri->getPort();
         }
+        /**@var $uri \Slim\Http\Uri */
+        $url .= $uri->getBasePath();
 
         return $url;
     }

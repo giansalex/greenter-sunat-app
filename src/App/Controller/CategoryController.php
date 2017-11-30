@@ -8,8 +8,8 @@
 
 namespace Greenter\Sunat\Controller;
 
-use Greenter\Sunat\Model\ProductCategory;
-use Greenter\Sunat\Repository\ProductCategoryRepository;
+use Doctrine\ORM\EntityManager;
+use Greenter\Sunat\Entity\ProductCategory;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -20,13 +20,13 @@ use Slim\Http\Response;
 class CategoryController
 {
     /**
-     * @var ProductCategoryRepository
+     * @var EntityManager
      */
-    private $repository;
+    private $em;
 
-    public function __construct(ProductCategoryRepository $repository)
+    public function __construct(EntityManager $manager)
     {
-        $this->repository = $repository;
+        $this->em = $manager;
     }
 
     /**
@@ -39,10 +39,12 @@ class CategoryController
     {
         $jwt = $request->getAttribute("jwt");
 
-        $items = $this->repository->getAll($jwt->id);
+        $repo = $this->getRepository();
+        $items = $repo->findBy(['userId' => $jwt->id]);
         $all = [];
 
         foreach ($items as $item) {
+            /**@var $item ProductCategory */
             $all[] = [
                 'id' => $item->getId(),
                 'code' => $item->getCode(),
@@ -64,7 +66,9 @@ class CategoryController
         $id = $args['id'];
         $jwt = $request->getAttribute("jwt");
 
-        $item = $this->repository->get($id, $jwt->id);
+        $repo = $this->getRepository();
+        /**@var $item ProductCategory */
+        $item = $repo->findBy(['userId' => $jwt->id, 'id' => $id]);
 
         if (empty($item)) {
             return $response->withStatus(404);
@@ -92,11 +96,7 @@ class CategoryController
             ->setCode($obj['code'])
             ->setDescription($obj['description']);
 
-        $success = $this->repository->add($category);
-
-        if (!$success) {
-            return $response->withStatus(400);
-        }
+        $this->em->persist($category);
 
         return $response;
     }
@@ -106,22 +106,23 @@ class CategoryController
      * @param Response   $response
      * @param array $args
      * @return \Psr\Http\Message\ResponseInterface
+     * @throws
      */
     public function put($request, $response, $args)
     {
         $obj = $request->getParsedBody();
         $jwt = $request->getAttribute("jwt");
-        $category = new ProductCategory();
-        $category->setUserId($jwt->id)
-            ->setCode($obj['code'])
-            ->setDescription($obj['description'])
-            ->setId(intval($obj['id']));
 
-        $success = $this->repository->update($category);
-
-        if (!$success) {
-            return $response->withStatus(400);
+        $repo = $this->getRepository();
+        $category = $repo->findOneBy(['userId' => $jwt->id, 'id' => intval($obj['id'])]);
+        if (empty($category)) {
+            return $response->withStatus(404);
         }
+
+        $category->setCode($obj['code'])
+                ->setDescription($obj['description']);
+
+        $this->em->flush();
 
         return $response;
     }
@@ -131,18 +132,29 @@ class CategoryController
      * @param Response   $response
      * @param array $args
      * @return \Psr\Http\Message\ResponseInterface
+     * @throws
      */
     public function delete($request, $response, $args)
     {
         $id = $args['id'];
         $jwt = $request->getAttribute("jwt");
 
-        $success = $this->repository->delete($id, $jwt->id);
-
-        if (!$success) {
-            return $response->withStatus(400);
+        $repo = $this->getRepository();
+        $category = $repo->findOneBy(['userId' => $jwt->id, 'id' => $id]);
+        if (empty($category)) {
+            return $response->withStatus(404);
         }
+        $this->em->remove($category);
+        $this->em->flush();
 
         return $response;
+    }
+
+    /**
+     * @return \Doctrine\ORM\EntityRepository
+     */
+    private function getRepository()
+    {
+        return $this->em->getRepository(ProductCategory::class);
     }
 }

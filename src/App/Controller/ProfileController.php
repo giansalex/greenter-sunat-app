@@ -8,7 +8,7 @@
 
 namespace Greenter\Sunat\Controller;
 
-use Greenter\Sunat\Model\Profile;
+use Greenter\Sunat\Entity\Profile;
 use Greenter\Sunat\Repository\ProfileRepository;
 use Psr\Container\ContainerInterface;
 use Slim\Http\Request;
@@ -39,6 +39,7 @@ class ProfileController
      * @param Response   $response
      * @param array $args
      * @return \Psr\Http\Message\ResponseInterface
+     * @throws
      */
     public function get($request, $response, $args)
     {
@@ -62,6 +63,7 @@ class ProfileController
      * @param Response   $response
      * @param array $args
      * @return \Psr\Http\Message\ResponseInterface
+     * @throws
      */
     public function post($request, $response, $args)
     {

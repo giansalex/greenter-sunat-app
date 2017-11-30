@@ -8,54 +8,29 @@
 
 namespace Greenter\Sunat\Repository;
 
-use Greenter\Sunat\Model\User;
+use Doctrine\ORM\EntityRepository;
+use Greenter\Sunat\Entity\User;
 
 /**
  * Class UserRepository
  * @package Greenter\Sunat\Repository
  */
-class UserRepository
+class UserRepository extends EntityRepository
 {
-    /**
-     * @var \PDO
-     */
-    private $connection;
-
-    /**
-     * UserRepository constructor.
-     * @param DbConnection $dbConnection
-     */
-    public function __construct(DbConnection $dbConnection)
-    {
-        $this->connection = $dbConnection->createConnection();
-    }
-
-    public function add(User $user)
-    {
-        $params = [
-            $user->getEmail(),
-            $user->getPassword()
-        ];
-        $con = $this->connection;
-        $stm = $con->prepare('INSERT INTO usuario(email, password) VALUES (?, ?)');
-        $stm->execute($params);
-        $id = $con->lastInsertId();
-        $con->exec("INSERT INTO perfil(user_id) VALUES($id)");
-        $user->setId($id);
-
-        return $user;
-    }
-
     /**
      * @param string $email
      * @return bool
+     * @throws
      */
     public function exist($email)
     {
-        $con = $this->connection;
-        $stm = $con->prepare('SELECT COUNT(id) FROM usuario WHERE email = ?');
-        $stm->execute([$email]);
-        $count = $stm->fetchColumn();
+        $count = $this->createQueryBuilder('c')
+            ->select('COUNT(c)')
+            ->where('c.email = ?1')
+            ->setParameter(1, $email)
+            ->getQuery()
+            ->getSingleScalarResult();
+
         return $count > 0;
     }
 
@@ -66,17 +41,15 @@ class UserRepository
      */
     public function get($email, $password)
     {
-        $con = $this->connection;
-        $stm = $con->prepare('SELECT id, email, password FROM usuario WHERE email=?');
-        $stm->execute([$email]);
-        /**@var $obj User */
-        $obj = $stm->fetchObject(User::class);
-        if ($obj === FALSE) {
+        $user = $this->findOneBy(['email' => $email]);
+        if (empty($user)) {
             return FALSE;
         }
-        if (password_verify($password, $obj->getPassword())) {
-            return $obj;
+
+        if (password_verify($password, $user->getPassword())) {
+            return $user;
         }
+
         return FALSE;
     }
 }

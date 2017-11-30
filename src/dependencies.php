@@ -18,6 +18,18 @@ $container['logger'] = function ($c) {
     return $logger;
 };
 
+$container['em'] = function ($c) {
+    $settings = $c->get('settings');
+    $config = \Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration(
+        $settings['doctrine']['meta']['entity_path'],
+        $settings['doctrine']['meta']['auto_generate_proxies'],
+        $settings['doctrine']['meta']['proxy_dir'],
+        $settings['doctrine']['meta']['cache'],
+        false
+    );
+    return \Doctrine\ORM\EntityManager::create($settings['doctrine']['connection'], $config);
+};
+
 $container['serializer'] = function () {
     $encoders = array(new JsonEncoder());
     $normalizers = array(new DateTimeNormalizer(), new GetSetMethodNormalizer());
@@ -33,20 +45,8 @@ $container['service.crypto'] = function () {
     return new \Greenter\Sunat\Service\CryptoSecure();
 };
 
-$container['repository.db'] = function ($c) {
-    return new \Greenter\Sunat\Repository\DbConnection($c->get('settings')['db']);
-};
-
-$container['repository.user'] = function ($c) {
-    return new \Greenter\Sunat\Repository\UserRepository($c->get('repository.db'));
-};
-
 $container['repository.profile'] = function ($c) {
     return new \Greenter\Sunat\Repository\ProfileRepository($c);
-};
-
-$container['repository.producto.category'] = function ($c) {
-    return new \Greenter\Sunat\Repository\ProductCategoryRepository($c->get('repository.db'));
 };
 
 $container['xml.repo'] = function ($c) {
@@ -74,5 +74,5 @@ $container['consult.dni'] = function () {
 };
 
 $container[CategoryController::class] = function ($c) {
-    return new CategoryController($c->get('repository.producto.category'));
+    return new CategoryController($c->get('em'));
 };

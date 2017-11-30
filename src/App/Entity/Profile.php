@@ -6,43 +6,60 @@
  * Time: 00:00
  */
 
-namespace Greenter\Sunat\Model;
+namespace Greenter\Sunat\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class Profile
- * @package Greenter\Sunat\Model
+ * @ORM\Entity
+ * @ORM\Table(name="perfil")
  */
 class Profile
 {
     /**
+     * @ORM\Column(name="ruc", type="string", length=11)
      * @var string
      */
     private $ruc;
 
     /**
+     * @ORM\Column(name="razon_social", type="string", length=200)
      * @var string
      */
     private $razonSocial;
 
     /**
+     * @ORM\Column(name="direccion", type="string", length=200)
      * @var string
      */
     private $direccion;
 
     /**
+     * @ORM\Column(name="user_sol", type="string", length=20)
      * @var string
      */
     private $userSol;
 
     /**
+     * @ORM\Column(name="clave_sol", type="string", length=30)
      * @var string
      */
     private $claveSol;
 
     /**
+     * @ORM\Id()
+     * @ORM\Column(name="user_id", type="integer", nullable=false)
      * @var int
      */
     private $userId;
+
+    /**
+     * @ORM\OneToOne(targetEntity="User", fetch="LAZY")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @var User
+     */
+    private $user;
 
     /**
      * @return string
@@ -149,6 +166,24 @@ class Profile
     public function setUserId($userId)
     {
         $this->userId = $userId;
+        return $this;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     * @return Profile
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
         return $this;
     }
 }

@@ -18,4 +18,9 @@ require __DIR__ . '/../src/middleware.php';
 // Register routes
 require __DIR__ . '/../src/routes.php';
 // Run app
-$app->run();
+try {
+    $app->run();
+} catch (Exception $e) {
+    file_put_contents(__DIR__.'/../logs/error.log', $e->getMessage());
+    var_dump($e);
+}

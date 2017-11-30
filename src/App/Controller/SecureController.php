@@ -8,8 +8,9 @@
 
 namespace Greenter\Sunat\Controller;
 
+use Doctrine\ORM\EntityManager;
 use Firebase\JWT\JWT;
-use Greenter\Sunat\Model\User;
+use Greenter\Sunat\Entity\User;
 use Greenter\Sunat\Repository\UserRepository;
 use Psr\Container\ContainerInterface;
 use Slim\Http\Request;
@@ -46,6 +47,7 @@ class SecureController
      * @param Response   $response
      * @param array $args
      * @return \Psr\Http\Message\ResponseInterface
+     * @throws
      */
     public function login($request, $response, $args)
     {
@@ -56,23 +58,26 @@ class SecureController
             return $response->withJson(['message' => $res['message']], 400);
         }
 
-        /**@var $repo UserRepository*/
-        $repo = $this->container->get('repository.user');
+        /**@var $em EntityManager */
+        $em = $this->container->get('em');
+        /**@var $repo UserRepository */
+        $repo = $em->getRepository(User::class);
+
         $user = $repo->get($params['email'], $params['password']);
 
         if ($user === false) {
             return $response->withJson(['message' => 'credenciales inválidas'], 400);
         }
-        /**@var $user User */
 
         return $this->withTokenById($response, $user->getId());
     }
 
     /**
-     * @param Request    $request
-     * @param Response   $response
+     * @param Request $request
+     * @param Response $response
      * @param array $args
      * @return \Psr\Http\Message\ResponseInterface
+     * @throws
      */
     public function register($request, $response, $args)
     {
@@ -83,8 +88,11 @@ class SecureController
             return $response->withJson(['message' => $res['message']], 400);
         }
 
-        /**@var $repo UserRepository*/
-        $repo = $this->container->get('repository.user');
+        /**@var $em EntityManager */
+        $em = $this->container->get('em');
+        /**@var $repo UserRepository */
+        $repo = $em->getRepository(User::class);
+
         if ($repo->exist($params['email'])) {
             return $response->withJson(['message' => 'email ya registrado'], 400);
         }
@@ -93,7 +101,8 @@ class SecureController
         $user->setEmail($params['email'])
             ->setPlainPassword($params['password']);
 
-        $user = $repo->add($user);
+        $em->persist($user);
+        $em->flush();
 
         return $this->withTokenById($response, $user->getId());
     }

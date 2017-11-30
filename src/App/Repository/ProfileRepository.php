@@ -8,7 +8,8 @@
 
 namespace Greenter\Sunat\Repository;
 
-use Greenter\Sunat\Model\Profile;
+use Doctrine\ORM\EntityManager;
+use Greenter\Sunat\Entity\Profile;
 use Greenter\Sunat\Service\CryptoSecure;
 use Psr\Container\ContainerInterface;
 
@@ -19,9 +20,10 @@ use Psr\Container\ContainerInterface;
 class ProfileRepository
 {
     /**
-     * @var \PDO
+     * @var EntityManager
      */
-    private $connection;
+    private $em;
+
     /**
      * @var ContainerInterface
      */
@@ -30,24 +32,24 @@ class ProfileRepository
     /**
      * ProfileRepository constructor.
      * @param ContainerInterface $container
+     * @throws
      */
     public function __construct(ContainerInterface $container)
     {
-        $this->connection = $container->get('repository.db')->createConnection();
+        $this->em = $container->get('em');
         $this->container = $container;
     }
 
     /**
      * @param int $userId
      * @return Profile
+     * @throws
      */
     public function get($userId)
     {
-        $con = $this->connection;
-        $res = $con->query('SELECT ruc, user_sol AS userSol, clave_sol AS claveSol, razon_social AS razonSocial, direccion, user_id FROM perfil WHERE user_id = ' . $userId);
-
+        $repo = $this->em->getRepository(Profile::class);
         /**@var $profile Profile*/
-        $profile = $res->fetchObject(Profile::class);
+        $profile = $repo->find($userId);
 
         if ($profile && $profile->getClaveSol()) {
             /**@var $crypt CryptoSecure */
@@ -61,6 +63,7 @@ class ProfileRepository
 
     /**
      * @param Profile $profile
+     * @throws
      */
     public function save(Profile $profile)
     {
@@ -71,15 +74,7 @@ class ProfileRepository
                 $this->container->get('settings')['crypto_key']));
         }
 
-        $con = $this->connection;
-        $stm = $con->prepare('UPDATE perfil SET ruc = ?, razon_social = ?, direccion=?, user_sol=?, clave_sol = ? WHERE user_id = ?');
-        $stm->execute([
-            $profile->getRuc(),
-            $profile->getRazonSocial(),
-            $profile->getDireccion(),
-            $profile->getUserSol(),
-            $profile->getClaveSol(),
-            $profile->getUserId(),
-        ]);
+        $this->em->persist($profile);
+        $this->em->flush();
     }
 }

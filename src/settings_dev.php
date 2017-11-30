@@ -4,14 +4,23 @@ return [
     'settings' => [
         'displayErrorDetails' => true, // set to false in production
         'addContentLengthHeader' => false, // Allow the web server to send the content-length header
-
-        // Db
-        'db' => [
-            'dsn' => 'sqlite:'. $curren_dir.'/../data/greenter.sqlite',
-            'user' => null,
-            'pass' => null,
+        'doctrine' => [
+            'meta' => [
+                'entity_path' => [
+                    'src/App/Entity'
+                ],
+                'auto_generate_proxies' => true,
+                'proxy_dir' =>  '',
+                'cache' => null,
+            ],
+            'connection' => [
+                'driver'   => 'pdo_mysql',
+                'host'     => 'localhost',
+                'dbname'   => 'greenter_app',
+                'user'     => 'root',
+                'password' => '',
+            ]
         ],
-
         // JWT
         'jwt' => [
             'secret' => 'ak5lkji3bAioTjm'

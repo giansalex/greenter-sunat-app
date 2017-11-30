@@ -6,26 +6,34 @@
  * Time: 23:58
  */
 
-namespace Greenter\Sunat\Model;
+namespace Greenter\Sunat\Entity;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class User
- * @package Greenter\Sunat\Model
+ * @ORM\Entity(repositoryClass="Greenter\Sunat\Repository\UserRepository")
+ * @ORM\Table(name="usuario")
  */
 class User
 {
     /**
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      * @var int
      */
     private $id;
     /**
+     * @ORM\Column(name="email", type="string", length=100)
      * @var string
      */
     private $email;
     /**
+     * @ORM\Column(name="password", type="string", length=120)
      * @var string
      */
     private $password;
+
     /**
      * @return int
      */
@@ -33,15 +41,7 @@ class User
     {
         return $this->id;
     }
-    /**
-     * @param int $id
-     * @return User
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-        return $this;
-    }
+
     /**
      * @return string
      */

@@ -32,8 +32,8 @@ return [
         // Monolog settings
         'logger' => [
             'name' => 'slim-app',
-            'path' => isset($_ENV['docker']) ? 'php://stdout' : $curren_dir . '/../logs/app.log',
-            'level' => \Monolog\Logger::DEBUG,
+            'path' => isset($_ENV['docker']) ? 'php://stdout' : $curren_dir . '/../logs',
+            'level' => Psr\Log\LogLevel::DEBUG,
         ],
     ],
 ];

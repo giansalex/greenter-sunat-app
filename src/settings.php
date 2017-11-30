@@ -28,8 +28,8 @@ return [
         'dir_xml' => $curren_dir.'/../data',
         'logger' => [
             'name' => 'slim-app',
-            'path' => $curren_dir . '/../logs/app.log',
-            'level' => \Monolog\Logger::INFO,
+            'path' => $curren_dir . '/../logs',
+            'level' => Psr\Log\LogLevel::INFO,
         ],
     ],
 ];

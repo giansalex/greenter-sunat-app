@@ -12,9 +12,7 @@ $container = $app->getContainer();
 // monolog
 $container['logger'] = function ($c) {
     $settings = $c->get('settings')['logger'];
-    $logger = new Monolog\Logger($settings['name']);
-    $logger->pushProcessor(new Monolog\Processor\UidProcessor());
-    $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
+    $logger =  new Katzgrau\KLogger\Logger($settings['path'], $settings['level'], ['extension' => 'log']);
     return $logger;
 };
 
@@ -41,12 +39,8 @@ $container['service.validator'] = function () {
     return new \Greenter\Sunat\Service\UserValidator();
 };
 
-$container['service.crypto'] = function () {
-    return new \Greenter\Sunat\Service\CryptoSecure();
-};
-
-$container['repository.profile'] = function ($c) {
-    return new \Greenter\Sunat\Repository\ProfileRepository($c);
+$container['service.crypto'] = function ($c) {
+    return new \Greenter\Sunat\Service\CryptoSecure($c->get('settings')['crypto_key']);
 };
 
 $container['xml.repo'] = function ($c) {

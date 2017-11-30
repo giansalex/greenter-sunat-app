@@ -8,8 +8,9 @@
 
 namespace Greenter\Sunat\Controller;
 
+use Doctrine\ORM\EntityManager;
 use Greenter\Sunat\Entity\Profile;
-use Greenter\Sunat\Repository\ProfileRepository;
+use Greenter\Sunat\Service\CryptoSecure;
 use Psr\Container\ContainerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -26,12 +27,19 @@ class ProfileController
     private $container;
 
     /**
+     * @var EntityManager
+     */
+    private $em;
+
+    /**
      * SaleController constructor.
      * @param ContainerInterface $container
+     * @throws
      */
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
+        $this->em = $container->get('em');
     }
 
     /**
@@ -44,10 +52,11 @@ class ProfileController
     public function get($request, $response, $args)
     {
         $jwt = $request->getAttribute("jwt");
-        /**@var $repo ProfileRepository */
-        $repo = $this->container->get('repository.profile');
 
-        $profile = $repo->get($jwt->id);
+        $profile = $this->em->find(Profile::class, $jwt->id);
+        if (empty($profile)) {
+            return $response->withStatus(404);
+        }
 
         return $response->withJson([
             'ruc' => $profile->getRuc(),
@@ -77,9 +86,14 @@ class ProfileController
             ->setClaveSol($json['clave_sol'])
             ->setUserId($jwt->id);
 
-        /**@var $repo ProfileRepository */
-        $repo = $this->container->get('repository.profile');
-        $repo->save($profile);
+        if ($profile->getClaveSol()) {
+            /**@var $crypt CryptoSecure */
+            $crypt = $this->container->get('service.crypto');
+            $profile->setClaveSol($crypt->encrypt($profile->getClaveSol()));
+        }
+
+        $this->em->persist($profile);
+        $this->em->flush();
 
         return $response;
     }

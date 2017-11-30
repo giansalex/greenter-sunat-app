@@ -15,15 +15,28 @@ class CryptoSecure
 {
     const IV = '4663d6c43g9176bu';
     const METHOD = 'AES-256-CBC';
+    /**
+     * @var string
+     */
+    private $key;
+
+    /**
+     * CryptoSecure constructor.
+     * @param $key
+     */
+    public function __construct($key)
+    {
+        $this->key = $key;
+    }
+
 
     /**
      * @param string $data
-     * @param string $key
      * @return string
      */
-    public function encrypt($data, $key)
+    public function encrypt($data)
     {
-        $output = openssl_encrypt($data, self::METHOD, $key, 0, self::IV);
+        $output = openssl_encrypt($data, self::METHOD, $this->key, 0, self::IV);
         $output = base64_encode($output);
 
         return $output;
@@ -31,12 +44,11 @@ class CryptoSecure
 
     /**
      * @param string $data
-     * @param string $key
      * @return string|bool
      */
-    public function decrypt($data, $key)
+    public function decrypt($data)
     {
-        return openssl_decrypt(base64_decode($data), self::METHOD, $key, 0, self::IV);
+        return openssl_decrypt(base64_decode($data), self::METHOD, $this->key, 0, self::IV);
     }
 
     /**

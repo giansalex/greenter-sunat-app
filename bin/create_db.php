@@ -1,7 +1,7 @@
 <?php
 
-$pathDb = __DIR__.'/../store/greenter.sqlite';
-$pathQuery = __DIR__.'/../store/sqlite_schema.sql';
+$pathDb = __DIR__.'/../schemas/greenter.sqlite';
+$pathQuery = __DIR__.'/../schemas/sqlite_schema.sql';
 
 if (file_exists($pathDb)) {
     echo 'La db ya existe';

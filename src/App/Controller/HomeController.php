@@ -43,7 +43,7 @@ HTML;
      */
     public function swagger($request, $response, $args)
     {
-        $filename = __DIR__ . '/../../../data/swagger.json';
+        $filename = __DIR__ . '/../../data/swagger.json';
         if (!file_exists($filename)) {
             return $response->withStatus(404);
         }

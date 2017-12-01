@@ -3,4 +3,4 @@
 !/logs/README.md
 /.idea/
 /composer.lock
-/data/*.sqlite
+/schemas/*.sqlite
